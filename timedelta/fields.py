@@ -1,3 +1,5 @@
+
+
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import six
@@ -9,6 +11,7 @@ from .helpers import parse
 from .forms import TimedeltaFormField
 
 # TODO: Figure out why django admin thinks fields of this type have changed every time an object is saved.
+
 
 class TimedeltaField(six.with_metaclass(models.SubfieldBase, models.Field)):
     """
@@ -23,7 +26,7 @@ class TimedeltaField(six.with_metaclass(models.SubfieldBase, models.Field)):
         self._min_value = kwargs.pop('min_value', None)
         self._max_value = kwargs.pop('max_value', None)
         super(TimedeltaField, self).__init__(*args, **kwargs)
-    
+
     def to_python(self, value):
         if (value is None) or isinstance(value, datetime.timedelta):
             return value
@@ -62,7 +65,7 @@ class TimedeltaField(six.with_metaclass(models.SubfieldBase, models.Field)):
     
     def value_to_string(self, obj):
         value = self._get_val_from_obj(obj)
-        return unicode(value)
+        return six.text_type(value)
     
     def get_default(self):
         """

@@ -1,5 +1,5 @@
 django-timedelta-field
-==========================
+======================
 
 .. image:: https://drone.io/bitbucket.org/schinckel/django-timedelta-field/status.png
 

@@ -6,6 +6,7 @@ import django
 
 BASE_PATH = os.path.dirname(__file__)
 
+
 def main(db_engine='sqlite3'):
     """
     Standalone django model test with a 'memory-only-django-installation'.
@@ -24,7 +25,7 @@ def main(db_engine='sqlite3'):
     global_settings.DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.%s' % db_engine,
-            'NAME': 'django-timedelta',
+            'NAME': 'django-timedelta-field',
         }
     } 
 
@@ -52,8 +53,10 @@ def main(db_engine='sqlite3'):
     
     sys.exit(failures)
 
+
 def test_postgres():
     main('postgresql_psycopg2')
+
 
 if __name__ == '__main__':
     main()
