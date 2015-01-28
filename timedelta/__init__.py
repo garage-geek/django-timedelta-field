@@ -1,6 +1,7 @@
 import os
 
-__version__ = open(os.path.join(os.path.dirname(__file__), "VERSION")).read().strip()
+with open(os.path.join(os.path.dirname(__file__), "VERSION")) as f:
+    __version__ = f.read().strip()
 
 try:
     from django.core.exceptions import ImproperlyConfigured
